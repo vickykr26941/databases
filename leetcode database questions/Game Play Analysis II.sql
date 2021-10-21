@@ -42,3 +42,8 @@ Output:
 | 2         | 3         |
 | 3         | 1         |
 +-----------+-----------+
+
+
+select player_id,min(device_id) device_id from Activity 
+group by player_id;
+
