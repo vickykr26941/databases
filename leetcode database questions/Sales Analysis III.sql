@@ -63,3 +63,11 @@ Output:
 +-------------+--------------+
 Explanation: 
 The product with id 1 was only sold in spring 2019 while the other two were sold after.
+
+
+
+select p.product_id,p.product_name from Sales s,Product p
+where s.product_id = p.product_id group by product_id
+having min(s.sale_date) >= '2019-01-01' and max(s.sale_date) <= '2019-03-31';
+
+
