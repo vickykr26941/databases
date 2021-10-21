@@ -24,3 +24,8 @@ Note: Every point is unique, which means there is no duplicates in table point.
  
 
 Follow-up: What if all these points have an id and are arranged from the left most to the right most of x axis?
+
+
+
+select min(b.x - a.x) shortest from point a, point b
+where b.x > a.x;
