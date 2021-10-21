@@ -44,3 +44,14 @@ Output:
 | 7    |
 +------+
 
+
+
+# first approach 
+select author_id as id from `views` group by author_id,viewer_id
+having sum(author_id = viewer_id) > 0 order by id;
+
+
+# second approach 
+select distinct author_id as id from `views` where author_id = viewer_id order by id;
+
+
