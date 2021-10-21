@@ -47,3 +47,18 @@ Explanation:
 Employees with Id 1,2,3 are part of a team with team_id = 8.
 Employee with Id 4 is part of a team with team_id = 7.
 Employees with Id 5,6 are part of a team with team_id = 9.
+
+
+# first approach 
+select employee_id, count(*) over(partition by team_id) as team_size
+from employee;
+
+
+# second approach 
+select e1.employee_id,(
+    select count(e2.team_id) from employee e2
+    where e1.team_id = e2.team_id group by team_id
+) as team_size from employee e1;
+
+
+
