@@ -20,3 +20,9 @@ Your query should return the following result for the sample case above.
 Note:
 The seat_id is an auto increment int, and free is bool ('1' means free, and '0' means occupied.).
 Consecutive available seats are more than 2(inclusive) seats consecutively available.
+
+
+select distinct a.seat_id from cinema a, cinema b 
+where abs(a.seat_id - b.seat_id) = 1 and a.free = 1 and b.free = 1
+order by seat_id;
+
