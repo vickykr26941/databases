@@ -63,3 +63,10 @@ Output:
 | 3           |
 +-------------+
 Explanation: Both sellers with id 1 and 3 sold products with the most total price of 2800.
+
+select seller_id from Sales
+group by seller_id having sum(price) >= all(
+    select sum(price) from Sales group by seller_id
+);
+
+
