@@ -31,6 +31,10 @@ Return the result table in any order.
 
 The query result format is in the following example.
 
+
+select project_id from Project group by project_id order by count(employee_id) desc limit 1;
+
+
  
 
 Example 1:
