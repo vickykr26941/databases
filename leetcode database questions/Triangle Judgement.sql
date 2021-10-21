@@ -17,3 +17,12 @@ For the sample data above, your query should return the follow result:
 | 13 | 15 | 30 | No       |
 | 10 | 20 | 15 | Yes      |
 
+
+# sum of any two sides should be greater then other side 
+
+select x,y,z,
+    case
+      when x + y > z and y + z > x and x + z > y then 'Yes'
+      else 'No'
+      end as triangle
+from triangle;
