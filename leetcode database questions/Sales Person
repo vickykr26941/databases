@@ -53,3 +53,12 @@ Explanation
 
 According to order '3' and '4' in table orders, it is easy to tell only salesperson 'John' and 'Pam' have sales to company 'RED',
 so we need to output all the other names in the table salesperson.
+
+
+select s.name from salesperson s where s.sales_id not in(
+    select o.sales_id from orders o, company c
+    where o.com_id = c.com_id and c.name = 'red'
+);
+
+
+
