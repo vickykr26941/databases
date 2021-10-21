@@ -41,3 +41,12 @@ Output:
 | 1           | 1           |
 +-------------+-------------+
 Explanation: The only pair is (1, 1) where they cooperated exactly 3 times.
+
+
+
+
+select actor_id,director_id from ActorDirector
+where actor_id = director_id group by actor_id,director_id
+having count(*) >= 3;
+
+
