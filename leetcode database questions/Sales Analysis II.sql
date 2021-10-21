@@ -62,3 +62,35 @@ Output:
 | 1           |
 +-------------+
 Explanation: The buyer with id 1 bought an S8 but did not buy an iPhone. The buyer with id 3 bought both.
+
+
+
+select s.buyer_id from sales s,Product p
+where s.product_id = p.product_id group by (s.buyer_id)
+having (
+    sum(
+      case
+        when p.product_name = "S8" then 1
+        else 0
+        end 
+    ) > 0
+    and 
+    sum(
+      case 
+        when p.product_name = "iPhone" then 1
+        else 0
+        end 
+    ) = 0
+);
+
+
+
+# same we can implement without case 
+
+select s.buyer_id from sales s,Product p
+where s.product_id = p.product_id group by (s.buyer_id)
+having(sum(p.product_name = "S8") > 0 and sum(p.product_name = "iPhone")=0);
+
+
+
+
