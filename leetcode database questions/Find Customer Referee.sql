@@ -22,3 +22,9 @@ For the sample data above, the result is:
 | Bill |
 | Zack |
 +------+
+
+solution1
+select name from customer where referee_id != 2 or referee_id is null;
+
+solution 2
+select name from customer where ifnull(referee_id,0) <> 2;
