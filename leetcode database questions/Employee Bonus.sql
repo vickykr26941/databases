@@ -30,3 +30,6 @@ Example ouput:
 | Brad  | null  |
 +-------+-------+
 
+solution : 
+SELECT name,bonus FROM Employee LEFT JOIN Bonus on Employee.empId = Bonus.empid
+WHERE bonus < 1000 or bonus is NULL;
