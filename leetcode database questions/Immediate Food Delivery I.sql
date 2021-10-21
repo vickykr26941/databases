@@ -41,3 +41,9 @@ Output:
 | 33.33                |
 +----------------------+
 Explanation: The orders with delivery id 2 and 3 are immediate while the others are scheduled.
+
+
+select round(100/count(*) * sum(order_date = customer_pref_delivery_date),2) as immediate_percentage from delivery;
+    
+    
+    
