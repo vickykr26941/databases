@@ -1,67 +1,67 @@
-SQL Schema
-Table: Sales
+-- SQL Schema
+-- Table: Sales
 
-+-------------+-------+
-| Column Name | Type  |
-+-------------+-------+
-| sale_id     | int   |
-| product_id  | int   |
-| year        | int   |
-| quantity    | int   |
-| price       | int   |
-+-------------+-------+
-(sale_id, year) is the primary key of this table.
-product_id is a foreign key to Product table.
-Each row of this table shows a sale on the product product_id in a certain year.
-Note that the price is per unit.
+-- +-------------+-------+
+-- | Column Name | Type  |
+-- +-------------+-------+
+-- | sale_id     | int   |
+-- | product_id  | int   |
+-- | year        | int   |
+-- | quantity    | int   |
+-- | price       | int   |
+-- +-------------+-------+
+-- (sale_id, year) is the primary key of this table.
+-- product_id is a foreign key to Product table.
+-- Each row of this table shows a sale on the product product_id in a certain year.
+-- Note that the price is per unit.
  
 
-Table: Product
+-- Table: Product
 
-+--------------+---------+
-| Column Name  | Type    |
-+--------------+---------+
-| product_id   | int     |
-| product_name | varchar |
-+--------------+---------+
-product_id is the primary key of this table.
-Each row of this table indicates the product name of each product.
+-- +--------------+---------+
+-- | Column Name  | Type    |
+-- +--------------+---------+
+-- | product_id   | int     |
+-- | product_name | varchar |
+-- +--------------+---------+
+-- product_id is the primary key of this table.
+-- Each row of this table indicates the product name of each product.
  
 
-Write an SQL query that reports the total quantity sold for every product id.
+-- Write an SQL query that reports the total quantity sold for every product id.
 
-Return the resulting table in any order.
+-- Return the resulting table in any order.
 
-The query result format is in the following example.
+-- The query result format is in the following example.
 
  
 
-Example 1:
+-- Example 1:
 
-Input: 
-Sales table:
-+---------+------------+------+----------+-------+
-| sale_id | product_id | year | quantity | price |
-+---------+------------+------+----------+-------+ 
-| 1       | 100        | 2008 | 10       | 5000  |
-| 2       | 100        | 2009 | 12       | 5000  |
-| 7       | 200        | 2011 | 15       | 9000  |
-+---------+------------+------+----------+-------+
-Product table:
-+------------+--------------+
-| product_id | product_name |
-+------------+--------------+
-| 100        | Nokia        |
-| 200        | Apple        |
-| 300        | Samsung      |
-+------------+--------------+
-Output: 
-+--------------+----------------+
-| product_id   | total_quantity |
-+--------------+----------------+
-| 100          | 22             |
-| 200          | 15             |
-+--------------+----------------+
+-- Input: 
+-- Sales table:
+-- +---------+------------+------+----------+-------+
+-- | sale_id | product_id | year | quantity | price |
+-- +---------+------------+------+----------+-------+ 
+-- | 1       | 100        | 2008 | 10       | 5000  |
+-- | 2       | 100        | 2009 | 12       | 5000  |
+-- | 7       | 200        | 2011 | 15       | 9000  |
+-- +---------+------------+------+----------+-------+
+-- Product table:
+-- +------------+--------------+
+-- | product_id | product_name |
+-- +------------+--------------+
+-- | 100        | Nokia        |
+-- | 200        | Apple        |
+-- | 300        | Samsung      |
+-- +------------+--------------+
+-- Output: 
+-- +--------------+----------------+
+-- | product_id   | total_quantity |
+-- +--------------+----------------+
+-- | 100          | 22             |
+-- | 200          | 15             |
+-- +--------------+----------------+
 
 
 
@@ -71,7 +71,7 @@ where Sales.product_id = Product.product_id
 group by Product.product_id;
 
 
-# we can do this without using second table // second table in useless here
+-- # we can do this without using second table // second table in useless here
 
 select product_id,sum(quantity) as total_quantity from Sales
 group by product_id;
