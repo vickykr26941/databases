@@ -34,6 +34,20 @@ Return result table in any order.
 
 The query result format is in the following example.
 
+
+
+select distinct country_name,( 
+    case
+       when weather_state <= 15 then "Cold"
+       when weather_state >= 25 then "Hot"
+       else "Warm"
+    end
+)as weather_type 
+ from countries,weather where countries.country_id = weather.country_id
+ and weather.day >= '2019-11-01' and weather.day < '2019-12-01';
+ 
+ 
+
  
 
 Example 1:
