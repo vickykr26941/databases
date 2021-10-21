@@ -64,3 +64,17 @@ Output:
 +--------------+----------------+
 
 
+
+
+select Product.product_id, sum(quantity) as total_quantity from Sales,Product 
+where Sales.product_id = Product.product_id
+group by Product.product_id;
+
+
+# we can do this without using second table // second table in useless here
+
+select product_id,sum(quantity) as total_quantity from Sales
+group by product_id;
+
+
+
