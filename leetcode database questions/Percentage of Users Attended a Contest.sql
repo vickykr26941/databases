@@ -73,3 +73,9 @@ All the users registered in contests 208, 209, and 210. The percentage is 100% a
 Alice and Alex registered in contest 215 and the percentage is ((2/3) * 100) = 66.67%
 Bob registered in contest 207 and the percentage is ((1/3) * 100) = 33.33%
 
+
+
+
+select contest_id,round(count(distinct user_id) / (select count(*) from users) * 100,2) as percentage from register
+group by contest_id
+order by percentage desc,contest_id;
