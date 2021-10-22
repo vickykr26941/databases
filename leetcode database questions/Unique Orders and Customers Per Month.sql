@@ -54,3 +54,8 @@ In November 2020 we have two orders from 2 different customers but invoices < $2
 In December 2020 we have two orders from 1 customer both with invoices > $20.
 In January 2021 we have two orders from 2 different customers, but only one of them with invoice > $20.
 
+
+select distinct left(order_date,7) as month, count(distinct order_id) as order_count, count(distinct customer_id) as customer_count from orders
+where invoice > 20
+group by month;
+
