@@ -86,3 +86,17 @@ Daniel made 1 sale in March 2020.
 Elizabeth made 2 sales in 2020 and 1 sale in 2019.
 Frank made 1 sale in 2019 but no sales in 2020.
 
+select seller_name from seller where seller_id not in(
+    select seller_id from orders where left(sale_date,4) = '2020'
+) order by 1;
+
+
+-- second approach 
+select seller_name 
+from seller s
+left join(
+    select seller_id,order_id from orders 
+    where left(sale_date,4) = '2020' ) as o
+on s.seller_id = o.seller_id
+where o.order_id is null
+order by 1;
