@@ -73,3 +73,8 @@ Explanation:
 "Alladin" is a movie, content for kids and was streamed in June 2020.
 "Cinderella" was not streamed in June 2020.
 
+
+select distinct title from TVProgram, Content
+where TVProgram.content_id = Content.content_id and left(TVProgram.program_date,7) = '2020-06'
+and Content.Kids_content = 'Y' and Content.content_type = 'Movies';
+
