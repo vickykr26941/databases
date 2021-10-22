@@ -77,4 +77,24 @@ LCHouse2: 2 units of LC-TV + 2 units of LC-KeyChain.
 LCHouse3: 1 unit of LC-T-Shirt.
           Total volume: 1*800 = 800 cubic feet.
           
+
+select name warehouse_name,sum(
+    case
+     when warehouse.product_id = products.product_id 
+     then products.width * products.length * products.height * warehouse.units
+     else 0
+    end
+) as volume
+from warehouse,products
+where warehouse.product_id = products.product_id 
+group by warehouse_name;
+
+
+  -- without using case bacause each product_id associated with different height,width,lenfth and unit
+select name warehouse_name,sum(units * height * length * width) as volume 
+from warehouse,products
+where warehouse.product_id = products.product_id
+group by warehouse_name;
+
+
           
