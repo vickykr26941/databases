@@ -57,3 +57,15 @@ The post with id 2 has two comments in the table with id 5 and 10.
 The post with id 12 has no comments in the table.
 The comment with id 6 is a comment on a deleted post with id 7 so we ignored it.
 
+
+select distinct s1.sub_id as post_id,(
+    select count(distinct s2.sub_id) from submissions s2
+    where s1.sub_id = s2.parent_id
+) as number_of_comments from submissions as s1
+  where s1.parent_id is null 
+  order by s1.sub_id;
+  
+  
+  
+  
+
