@@ -70,3 +70,15 @@ Explanation:
 John, Daiana, Steve, and Jasmine are enrolled in departments 14, 33, 74, and 77 respectively. department 14, 33, 74, and 77 do not exist in the Departments table.
 
 
+
+
+-- first approach 
+select distinct students.id,students.name from students where students.department_id not in(
+    select distinct department_id from departments,students
+    where students.department_id = departments.id
+);
+
+-- second approach 
+select distinct students.id,students.name from students where students.department_id not in(
+    select id from departments
+);
