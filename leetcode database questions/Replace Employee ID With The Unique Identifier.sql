@@ -67,3 +67,9 @@ The unique ID of Meir is 2.
 The unique ID of Winston is 3.
 The unique ID of Jonathan is 1.
 
+
+select unique_id,name from  employees
+left join employeeuni on employees.id = employeeuni.id;
+
+
+
