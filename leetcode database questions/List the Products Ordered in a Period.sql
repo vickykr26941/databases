@@ -78,3 +78,12 @@ Products with product_id = 4 was not ordered in February 2020.
 Products with product_id = 5 is ordered in February a total of (50 + 50) = 100.
 
 
+
+select product_name,sum(unit) as unit from products,orders
+where products.product_id = orders.product_id
+and orders.order_date >= '2020-02-01' and orders.order_date <= '2020-02-28'
+group by product_name having sum(unit) >= 100;
+
+
+
+
