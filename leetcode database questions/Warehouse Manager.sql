@@ -96,5 +96,4 @@ from warehouse,products
 where warehouse.product_id = products.product_id
 group by warehouse_name;
 
-
           
