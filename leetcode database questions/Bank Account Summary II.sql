@@ -68,3 +68,9 @@ Alice's balance is (7000 + 7000 - 3000) = 11000.
 Bob's balance is 1000.
 Charlie's balance is (6000 + 6000 - 4000) = 8000.
 
+
+select users.name,sum(amount) as balance from users,transactions
+where transactions.account = users.account 
+group by users.account having balance > 10000;
+
+
