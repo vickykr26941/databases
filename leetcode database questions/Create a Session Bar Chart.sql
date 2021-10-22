@@ -50,4 +50,21 @@ For session_id 4 has a duration greater or equal than 5 minutes and less than 10
 There is no session with a duration greater than or equal to 10 minutes and less than 15 minutes.
 For session_id 5 has a duration greater than or equal to 15 minutes.
 
+# select (
+#     case 
+#       when duration/60 < 5 then '[0-5>'
+#       when duration/60 >=5 and duration/60 <10 then '[5-10>'
+#       when duration/60 >= 10 and duration/60 <15 then '[10-15>'
+#       else '15 or more'
+#     end
+# ) as bin,count(1) as total from sessions group by 1;
+
+
+select '[0-5>' bin, sum(case when duration/60 between 0 and 5 then 1 else 0 end) total from sessions
+union 
+select '[5-10>' bin, sum(case when duration/60 between 5 and 10 then 1 else 0 end) total from sessions
+union
+select '[10-15>' bin, sum(case when duration/60 between 10 and 15 then 1 else 0 end) total from sessions
+union
+select '15 or more' bin,sum(case when duration/60 >= 15 then 1 else 0 end) total from sessions;
 
