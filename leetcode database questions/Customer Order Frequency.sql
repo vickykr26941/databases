@@ -95,3 +95,16 @@ Winston spent $300 (300 * 1) in June and $100 ( 10 * 1 + 45 * 2) in July 2020.
 Jonathan spent $600 (300 * 2) in June and $20 ( 2 * 10) in July 2020.
 Moustafa spent $110 (10 * 2 + 45 * 2) in June and $0 in July 2020.
 
+
+select customer_id,name from(
+    select customers.customer_id,customers.name,
+    sum(case when left(orders.order_date,7) = '2020-06' then product.price * orders.quantity else 0 end) as t1,
+    sum(case when left(orders.order_date,7) = '2020-07' then product.price * orders.quantity else 0 end) as t2
+    from orders,product, customers
+    where orders.product_id = product.product_id and customers.customer_id = orders.customer_id 
+    group by customers.customer_id
+) as t where t1>= 100 and t2 >= 100;
+
+
+
+
