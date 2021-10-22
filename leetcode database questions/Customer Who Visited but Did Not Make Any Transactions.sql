@@ -72,3 +72,15 @@ Customer with id = 54 visited the mall three times. During 2 visits they did not
 Customer with id = 96 visited the mall once and did not make any transactions.
 As we can see, users with IDs 30 and 96 visited the mall one time without making any transactions. Also, user 54 visited the mall twice and did not make any transactions.
 
+
+
+select distinct visits.customer_id,sum(amount is null) as count_no_trans from visits 
+left join transactions on visits.visit_id = transactions.visit_id
+group by customer_id having(sum(amount is null) > 0);
+
+-- same as above 
+select visits.customer_id,count(visits.visit_id) as count_no_trans from visits
+left join transactions on visits.visit_id = transactions.visit_id
+where amount is null
+group by customer_id;
+
