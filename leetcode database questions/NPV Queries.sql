@@ -73,3 +73,10 @@ The npv value of (7, 2018) is not present in the NPV table, we consider it 0.
 The npv values of all other queries can be found in the NPV table.
 
 
+
+select distinct queries.id,queries.year,ifnull(NPV.npv,0) as npv
+from queries left join NPV on NPV.id = queries.id and NPV.year = queries.year;
+
+
+
+
