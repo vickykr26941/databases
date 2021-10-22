@@ -48,3 +48,6 @@ For 2020-05-30, Sold items were (Headphone, Basketball, T-shirt), we sort them l
 For 2020-06-01, Sold items were (Pencil, Bible), we sort them lexicographically and separate them by a comma.
 For 2020-06-02, the Sold item is (Mask), we just return it.
 
+
+select sell_date,count(distinct product) as num_sold,group_concat(distinct product order by product asc separator ',') as products from Activities
+group by sell_date order by sell_date;
