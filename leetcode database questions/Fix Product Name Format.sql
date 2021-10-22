@@ -52,3 +52,10 @@ In January, 2 LcPhones were sold. Please note that the product names are not cas
 In February, 2 LCKeychains and 1 LCPhone were sold.
 In March, one matryoshka was sold.
 
+
+select lower(trim(product_name)) product_name, date_format(sale_date,'%Y-%m') sale_date,count(sale_id) total
+from sales 
+group by 1,2
+order by 1,2;
+
+
