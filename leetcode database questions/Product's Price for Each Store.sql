@@ -45,3 +45,11 @@ Product 0 price's are 95 for store1, 100 for store2 and, 105 for store3.
 Product 1 price's are 70 for store1, 80 for store3 and, it's not sold in store2.
 
 
+
+select product_id,
+    sum(case when store = 'store1' then price end) store1,
+    sum(case when store = 'store2' then price end) store2,
+    sum(case when store = 'store3' then price end) store3
+from products group by product_id;
+
+
