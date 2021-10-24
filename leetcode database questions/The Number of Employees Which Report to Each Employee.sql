@@ -42,4 +42,10 @@ Output:
 +-------------+-------+---------------+-------------+
 Explanation: Hercy has 2 people report directly to him, Alice and Bob. Their average age is (41+36)/2 = 38.5, which is 39 after rounding it to the nearest integer.
 
+select a.employee_id,a.name,count(*) reports_count,round(avg(b.age),0) average_age
+from employees a,employees b where a.employee_id = b.reports_to
+group by 1
+order by 1;
+
+
 
