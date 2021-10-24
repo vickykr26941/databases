@@ -39,3 +39,5 @@ Tweet 1 has length = 14. It is a valid tweet.
 Tweet 2 has length = 32. It is an invalid tweet.
 
 
+select tweet_id from tweets
+where char_length(content) > 15;
