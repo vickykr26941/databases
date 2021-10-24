@@ -76,3 +76,10 @@ Explanation:
 - The amount of money canceled for ham is 5 + 0 = 5
 - The amount of money refunded for ham is 0 + 3 = 3
 
+
+select product.name,ifnull(sum(rest),0) rest,ifnull(sum(paid),0) paid,ifnull(sum(canceled),0) canceled,ifnull(sum(refunded),0) refunded
+from product left join invoice on product.product_id = invoice.product_id
+group by product.product_id
+order by 1;
+
+
