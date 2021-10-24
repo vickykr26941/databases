@@ -53,3 +53,9 @@ For 2020-12-8, toyota gets leads = [0, 1] and partners = [0, 1, 2] while honda g
 For 2020-12-7, toyota gets leads = [0] and partners = [1, 2] while honda gets leads = [0, 1, 2] and partners = [1, 2].
 
 
+
+select date_id,make_name,count(distinct lead_id) unique_leads,count(distinct partner_id) unique_partners
+from dailysales 
+group by date_id,make_name;
+
+
