@@ -49,4 +49,6 @@ Customer 3 has no revenue in the year 2021.
 Customer 4 has revenue equal to 20 in the year 2021.
 Thus only customers 1 and 4 have positive revenue in the year 2021.
 
-
+select customer_id from customers
+where `year` = '2021'
+group by customer_id having sum(revenue) > 0;
