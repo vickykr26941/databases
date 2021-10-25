@@ -72,3 +72,7 @@ User 3 requested two messages within 6 minutes and 59 seconds of each other, so 
 User 6 requested two messages within 23 hours, 59 minutes, and 59 seconds of each other, so we include them.
 User 7 requested two messages within 24 hours and 1 second of each other, so we exclude them from the answer.
 
+
+select distinct a.user_id from confirmations a,confirmations b
+where a.user_id = b.user_id and a.time_stamp < b.time_stamp and timestampdiff(second,a.time_stamp,b.time_stamp) <= 86400
+group by a.user_id;
