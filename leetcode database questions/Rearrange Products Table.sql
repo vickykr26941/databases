@@ -45,3 +45,10 @@ Explanation:
 Product 0 is available in all three stores with prices 95, 100, and 105 respectively.
 Product 1 is available in store1 with price 70 and store3 with price 80. The product is not available in store2.
 
+
+select product_id,'store1' store,store1 price from products where store1 > 0
+union
+select product_id,'store2' store,store2 price from products where store2 > 0
+union
+select product_id,'store3' store,store3 price from products where store3 > 0;
+
