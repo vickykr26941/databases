@@ -51,3 +51,7 @@ For the player with id 3, 0 + 5 = 5 games played by 2018-07-03.
 Note that for each player we only care about the days when the player logged in.
 
 
+select a.player_id,a.event_date,sum(b.games_played) as games_played_so_far 
+from activity a,activity b 
+where a.player_id = b.player_id and a.event_date >= b.event_date
+group by 1,2;
