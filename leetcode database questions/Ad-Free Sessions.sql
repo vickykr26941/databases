@@ -72,3 +72,13 @@ The ad with ID 3 was shown to user 2 at time 20 while they were in session 4.
 We can see that sessions 1 and 4 had at least one ad. Sessions 2, 3, and 5 did not have any ads, so we return them.
 
 
+select session_id from playback where session_id not in(
+    select distinct session_id from playback,ads
+    where playback.customer_id = ads.customer_id and ads.timestamp >= start_time and ads.timestamp <= end_time
+);
+
+-- another way
+select playback.session_id from playback left join ads 
+on playback.customer_id = ads.customer_id 
+and ads.timestamp between start_time and end_time 
+where ads.customer_id is null;
