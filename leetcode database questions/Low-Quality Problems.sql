@@ -52,3 +52,7 @@ Explanation: The like percentages are as follows:
 Problems 7, 10, 11, and 13 are low-quality problems because their like percentages are less than 60%.
 
 
+
+select problem_id from problems
+where likes /(likes + dislikes) * 100 < 60
+order by 1;
