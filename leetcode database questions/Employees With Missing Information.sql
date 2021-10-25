@@ -64,3 +64,8 @@ The name of employee 1 is missing.
 The salary of employee 2 is missing.
 
 
+select employee_id from employees where employee_id not in (select employee_id from salaries)
+union 
+select employee_id from salaries where employee_id not in (select employee_id from employees)
+order by 1 ;
+
