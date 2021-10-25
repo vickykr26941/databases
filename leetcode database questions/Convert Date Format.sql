@@ -37,3 +37,6 @@ Output:
 +-------------------------+
 Explanation: Please note that the output is case-sensitive.
 
+select date_format(day,"%W, %M %e, %Y") as day from days;
+
+
