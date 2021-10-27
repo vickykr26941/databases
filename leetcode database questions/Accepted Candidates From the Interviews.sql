@@ -75,3 +75,6 @@ Explanation:
 - Candidate 8: The total score is 6, and they have zero years of experience. We do not include them in the result table because of their years of experience and the score.
 
 
+select candidate_id from candidates, rounds
+where candidates.interview_id = rounds.interview_id and years_of_exp >= 2
+group by candidate_id having sum(score) > 15;
