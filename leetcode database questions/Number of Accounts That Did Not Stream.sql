@@ -67,3 +67,6 @@ Explanation: Users 4 and 9 did not stream in 2021.
 User 11 did not subscribe in 2021.
 
 
+select count(*) accounts_count from subscriptions left join streams
+on subscriptions.account_id = streams.account_id
+where left(end_date,4) = '2021' and left(stream_date,4) < '2021';
