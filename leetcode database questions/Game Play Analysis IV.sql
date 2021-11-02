@@ -41,3 +41,10 @@ Output:
 +-----------+
 Explanation: 
 Only the player with id 1 logged back in after the first day he had logged in so the answer is 1/3 = 0.33
+
+
+
+
+select round(count(t2.player_id) / count(t1.player_id),2) as fraction from
+(select player_id,min(event_date) as first_login from activity group by player_id) t1 left join activity t2
+on t1.player_id = t2.player_id and t1.first_login = t2.event_date - 1;
